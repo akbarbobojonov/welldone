@@ -1,0 +1,20 @@
+{% extends "site/layout.html" %}
+
+{% load i18n %}
+
+{% block content %}
+    <div class="ui center aligned segment">
+        {% if request.user.is_authenticated %}
+            <p>
+                <a href="{% url "logout" %}" class="ui blue button">{% trans "Log out" %} ({{ request.user.username }})</a>
+            </p>
+            {% if request.user.is_staff and request.user.is_superuser %}
+                <p>
+                    <a href="{% url "admin:index" %}" class="ui teal button">{% trans "Admin panel" %}</a>
+                </p>
+            {% endif %}
+        {% else %}
+            <a href="{% url "login" %}" class="ui green button">{% trans "Login" %}</a>
+        {% endif %}
+    </div>
+{% endblock content %}

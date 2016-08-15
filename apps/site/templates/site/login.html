@@ -1,0 +1,41 @@
+{% extends "site/auth_layout.html" %}
+{% load i18n %}
+
+{% block content %}
+    <h3 class="ui header">{% trans "Log in" %}</h3>
+    {% if form.errors %}
+        <div class="ui warning message">
+            <p>{% trans "Your username and password didn't match. Please try again." %}</p>
+        </div>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+        <p>{% blocktrans %}Your account doesn't have access to this page. To proceed,
+            please login with an account that has access.
+        {% endblocktrans %}</p>
+        {% else %}
+        <p>{% trans "Please login to see this page." %}</p>
+        {% endif %}
+    {% endif %}
+    
+    <div class="ui form">
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="field">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="field">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+            </div>
+            {# Assumes you setup the password_reset view in your URLconf #}
+            <p><a href="{% url "password_reset" %}">{% trans "Forgotten your password or username?" %}</a></p>
+            
+            <input type="submit" value="{% trans "Log in" %}" class="ui primary button" />
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,97 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Standard Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    
+    <!-- Site Properties -->
+    <title>Well-Done</title>
+    
+    <link rel="stylesheet" type="text/css" href="{% static "site/dist/semantic.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "site/main.css" %}">
+
+    <script type="text/javascript" src="{% static "site/library/jquery-3.1.0.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "site/dist/semantic.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "site/main.js" %}"></script>
+    <!-- <script src=""></script> -->
+</head>
+<body class="pushable">
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu transition hidden">
+        <div class="ui container">
+        <a href="{% url "home" %}" class="active item">{% trans "Home" %}</a>
+        <a href="{% url "about" %}" class="item">{% trans "About" %}</a>
+        <div class="right menu">
+            {% if request.user.is_authenticated %}
+                <div class="item">
+                    <a href="{% url "logout" %}" class="ui orange button">{% trans "Log out" %} ({{ request.user.username }})</a>
+                </div>
+                <div class="item">
+                    {% if request.user.is_staff and request.user.is_superuser %}
+                        <a href="{% url "admin:index" %}" class="ui teal button">{% trans "Admin panel" %}</a>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="item">
+                    <a href="{% url "login" %}" class="ui primary button">{% trans "Log in" %}</a>
+                </div>
+                <div class="item">
+                    <a href="{% url "signup" %}" class="ui primary button">{% trans "Sign Up" %}</a>
+                </div>
+            {% endif %}
+        </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <div class="ui vertical inverted sidebar menu left">
+        <a href="{% url "home" %}" class="active item">{% trans "Home" %}</a>
+        <a href="{% url "about" %}" class="item">{% trans "About" %}</a>
+        {% if request.user.is_authenticated %}
+            <a href="{% url "logout" %}" class="item">{% trans "Log out" %} ({{ request.user.username }})</a>
+            {% if request.user.is_staff and request.user.is_superuser %}
+                <a href="{% url "admin:index" %}" class="item">{% trans "Admin panel" %}</a>
+            {% endif %}
+        {% else %}
+            <a href="{% url "login" %}" class="item">{% trans "Log in" %}</a>
+            <a href="{% url "signup" %}" class="item">{% trans "Sign Up" %}</a>
+        {% endif %}
+    </div>
+
+
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui inverted vertical masthead center aligned segment">
+            <div class="ui container">
+                <div class="ui large secondary inverted pointing menu">
+                    <a class="toc item"><i class="sidebar icon"></i></a>
+                    <a href="{% url "home" %}" class="active item">{% trans "Home" %}</a>
+                    <a href="{% url "about" %}" class="item">{% trans "About" %}</a>
+                    <div class="right item">
+                        {% if request.user.is_authenticated %}
+                            <a href="{% url "logout" %}" class="ui orange button">{% trans "Log out" %} ({{ request.user.username }})</a>
+                            {% if request.user.is_staff and request.user.is_superuser %}
+                                <a href="{% url "admin:index" %}" class="ui teal button">{% trans "Admin panel" %}</a>
+                            {% endif %}
+                        {% else %}
+                            <a href="{% url "login" %}" class="ui inverted button">{% trans "Log in" %}</a>
+                            <a href="{% url "signup" %}" class="ui inverted button">{% trans "Sign Up" %}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui text container">
+                <h1 class="ui inverted header">
+                Imagine-a-Well-Done
+                </h1>
+                <h2>Do whatever you want when you want to.</h2>
+                <a href="{% url "signup" %}" class="ui huge primary button">{% trans "Get Started" %} <i class="right arrow icon"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
