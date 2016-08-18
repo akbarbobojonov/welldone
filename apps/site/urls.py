@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^$', Home.as_view(), name='home'),
     url(r'^about/', About.as_view(), name='about'),
     url(r'^signup/', Signup.as_view(), name='signup'),
+    url(r'^signup_complete/', SignupComplete.as_view(), name='signup_complete'),
     
     url(r'^login/$', auth_views.login, {'template_name': 'site/login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'template_name': 'site/registration/logged_out.html'}, name='logout'),

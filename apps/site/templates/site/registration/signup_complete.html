@@ -1,0 +1,11 @@
+{% extends "site/auth_layout.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div class="ui stacked raised segment">
+        <div class="ui blue message">
+            <p>{% trans "Sign up complete, Please Log in" %}</p>
+        </div>
+        <p><a href="{% url 'login' %}">{% trans 'Log in again' %}</a></p>
+    </div>
+{% endblock content %}

@@ -14,16 +14,51 @@
     <link rel="stylesheet" type="text/css" href="{% static "site/main.css" %}">
 
     <!-- <script src=""></script> -->
+    <style type="text/css">
+        body {
+            background-color: #fff;
+        }
+        body > .grid {
+            height: 100%;
+        }
+        .image {
+            margin-top: -100px;
+        }
+        .column {
+            max-width: 400px;
+        }
+        .errors input {
+            border-color: red;
+        }
+        .errorlist {
+            margin: 0;
+            padding: 2px 0;
+            list-style: none;
+            text-align: left;
+            color: #9f3a38;
+            font-size: 12px;
+        }
+        .checkbox label {
+            cursor: default;
+        }
+        .text-left {
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
-    <div class="ui container">
-        <div class="ui aligned column grid custom-centered">
-            <div class="column">
-                <br>
-                <h1 class="ui centered header"><a href="{% url "home" %}">Well done</a></h1>
-                <div class="ui segment">
-                    {% block content %}{% endblock content %}
+    <div class="ui middle aligned center aligned grid">
+        <div class="column">        
+            <h1 class="ui header"><a href="{% url "home" %}">Well done</a></h1>
+            {% if messages %}
+                <div class="ui yellow message">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
                 </div>
+            {% endif %}
+            <div class="ui form">
+                {% block content %}{% endblock content %}
             </div>
         </div>
     </div>
