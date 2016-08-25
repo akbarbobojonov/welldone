@@ -1,0 +1,16 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans "Verify email" %}</title>
+</head>
+<body>
+    <h3>{{ fullname }}</h3>
+    <p><a href="{{ confirm_url }}">{% trans "Click here to verify your email" %}</a></p>
+    <br>
+    <br>
+    <br>
+    <p>{% blocktrans %}The {{ site_name }} team{% endblocktrans %}</p>
+</body>
+</html>

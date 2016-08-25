@@ -8,10 +8,12 @@
 {% endblock %}
 
 {% block content %}
-    <div class="ui stacked raised segment">
-        <div class="ui info message">
-            <p>{% trans "Thanks for spending some quality time with the Web site today." %}</p>
-        </div>
-        <p><a href="{% url 'login' %}">{% trans 'Log in again' %}</a></p>
+    <div class="ui info message">
+        <p>{% trans "Thanks for spending some quality time with the Web site today." %}</p>
     </div>
+    <p><a href="{% url 'login' %}">{% trans 'Log in again' %}</a></p>
 {% endblock %}
+
+{% block bottomlinks %}
+    <a href="{% url "home" %}">{% trans "Home" %}</a>
+{% endblock bottomlinks %}

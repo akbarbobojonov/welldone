@@ -8,12 +8,13 @@ urlpatterns = [
     url(r'^about/', About.as_view(), name='about'),
     url(r'^signup/', Signup.as_view(), name='signup'),
     url(r'^signup_complete/', SignupComplete.as_view(), name='signup_complete'),
+    url(r'^email_verified/(?P<activation_key>[a-zA-Z0-9]+)$', EmailVerified.as_view(), name="email_verified"),
     
-    url(r'^login/$', auth_views.login, {'template_name': 'site/login.html'}, name='login'),
+    url(r'^login/$', auth_views.login, {'template_name': 'site/registration/login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'template_name': 'site/registration/logged_out.html'}, name='logout'),
     url(r'^password_reset/$', auth_views.password_reset, {
         'template_name': 'site/registration/password_reset_form.html',
-        'email_template_name': 'site/registration/password_reset_email.html',
+        'email_template_name': 'site/registration/email/password_reset_email.html',
     }, name='password_reset'),
     url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.password_reset_confirm, {'template_name': 'site/registration/password_reset_confirm.html'}, name='password_reset_confirm'),
     url(r'^reset/done/$', auth_views.password_reset_complete, {'template_name': 'site/registration/password_reset_complete.html'}, name='password_reset_complete'),

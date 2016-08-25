@@ -1,6 +1,6 @@
 $( document ).ready(function() {
     $('.ui.checkbox').checkbox();
-    $('.ui.dropdown').dropdown();
+
     // fix menu when passed
     $('.masthead').visibility({
         once: false,
