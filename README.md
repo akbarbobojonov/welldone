@@ -34,6 +34,15 @@ EMAIL_PORT = 587
 NOREAPLY_EMAIL = 'noreaply-your@mail.com'
 ```
 
+##### Saytni ishga tushirish
+
+8080 port bilan ishga tushirish. 
+
+```sh
+$ python manage.py runserver 0.0.0.0:8080
+```
+
+
    [Semantic UI]: <http://semantic-ui.com/>
    [Django]: <https://www.djangoproject.com/>
    [PostgreSQL]: <https://www.postgresql.org/>
