@@ -1,4 +1,4 @@
-# Well Done Application
+## Well Done Application
 
 welldone - biron bir proyektni boshlaganda kerak bo‘ladigan sahifalar.
 
